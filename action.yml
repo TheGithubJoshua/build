@@ -35,6 +35,15 @@ runs:
     - run: |
         dragon
       shell: bash
+      
     - run: |
         dragon c b r
       shell: bash
+        - run: |
+        if [ "${{ inputs.rootless }}" == "yes" ]; then
+          dragon c b r rootless
+          shell: bash
+        else
+          dragon c b r
+          shell: bash
+        fi
