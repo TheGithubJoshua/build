@@ -24,7 +24,7 @@ on:
       - master
       - 'dev/**'
 
- inputs:
+inputs:
    rootless:
      description: 'Default no'
      required: false
