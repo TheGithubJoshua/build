@@ -5,7 +5,7 @@ Github action to build a `dragon` package
 ## Usage
 
 `dragon-build` Just use
-the action like any other action under any workflow job. If you want a rootless build make sure rootless is ser to 'yes'
+the action like any other action under any workflow job. If you want a rootless build make sure rootless is set to 'yes'
 
 ```yaml
 steps:
