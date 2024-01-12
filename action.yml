@@ -3,7 +3,11 @@
 
 name: dragon-build
 description: Build a package with dragon
-
+inputs:
+  rootless:
+    description: 'Run with rootless? Set to "yes" to enable.'
+    required: false
+    default: 'no'
 on:
   push:
     paths-ignore:
