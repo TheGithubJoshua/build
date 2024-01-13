@@ -41,4 +41,4 @@ runs:
         fi
       shell: bash
       env:
-        ADD_ROOTLESS: ${{ inputs.add_rootless }}
+        ADD_ROOTLESS: ${{ github.events.inputs.add_rootless }}
