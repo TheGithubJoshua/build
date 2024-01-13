@@ -1,13 +1,6 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
 name: dragon-build
 description: Build a package with dragon
-inputs:
-  rootless:
-    description: 'Run with rootless? Set to "yes" to enable.'
-    required: false
-    default: 'no'
+
 on:
   push:
     paths-ignore:
@@ -24,25 +17,26 @@ on:
       - master
       - 'dev/**'
 
+inputs:
+  add_rootless:
+    description: 'Do you want the build to be rootless, default false.'
+    required: false
+    default: 'no'
+
 runs:
   using: "composite"
   steps:
-    - run: 
+    - run: |
         python3 -m pip install --upgrade pip
         pip3 install --break-system-packages dragon
       shell: bash
     - run: |
         dragon
       shell: bash
-      
     - run: |
-        dragon c b r
-      shell: bash
-        - run: |
-        if [ "${{ inputs.rootless }}" == "yes" ]; then
+        if [ "${{ inputs.add_rootless }}" = "yes" ]; then
           dragon c b r rootless
-          shell: bash
         else
           dragon c b r
-          shell: bash
         fi
+      shell: bash
