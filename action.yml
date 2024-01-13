@@ -18,10 +18,10 @@ on:
       - 'dev/**'
 
 inputs:
-  add_rootless:
-    description: 'Rootless or rootful? Default no.'
+  rootless:
+    description: 'rootless?'
     required: false
-    default: 'no'
+    default: 'rootless'
 
 runs:
   using: "composite"
@@ -34,11 +34,5 @@ runs:
         dragon
       shell: bash
     - run: |
-        if [ "${{ github.events.env.ADD_ROOTLESS }}" = "yes" ]; then
-          dragon c b r rootless
-        else
-          dragon c b r
-        fi
+        dragon c b r ${{ inputs.rootless }}
       shell: bash
-      env:
-        ADD_ROOTLESS: ${{ github.events.inputs.add_rootless }}
