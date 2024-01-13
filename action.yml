@@ -34,7 +34,7 @@ runs:
         dragon
       shell: bash
     - run: |
-        if [ "${{ env.ADD_ROOTLESS }}" = "yes" ]; then
+        if [ "${{ github.events.env.ADD_ROOTLESS }}" = "yes" ]; then
           dragon c b r rootless
         else
           dragon c b r
