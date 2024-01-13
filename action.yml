@@ -3,6 +3,11 @@
 
 name: dragon-build
 description: Build a package with dragon
+inputs:
+  rootless:
+    description: 'Run with rootless? Set to "yes" to enable.'
+    required: false
+    default: 'no'
 
 on:
   push:
@@ -23,12 +28,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    inputs:
-      rootless:
-        description: 'Default no'
-        required: false
-        default: no
 
     steps:
       - name: Install dependencies
