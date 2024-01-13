@@ -19,7 +19,7 @@ on:
 
 inputs:
   add_rootless:
-    description: 'Do you want the build to be rootless, default false.'
+    description: 'Rootless or rootful? Default no.'
     required: false
     default: 'no'
 
@@ -34,9 +34,11 @@ runs:
         dragon
       shell: bash
     - run: |
-        if [ "${{ inputs.add_rootless }}" = "yes" ]; then
+        if [ "${{ env.ADD_ROOTLESS }}" = "yes" ]; then
           dragon c b r rootless
         else
           dragon c b r
         fi
       shell: bash
+      env:
+        ADD_ROOTLESS: ${{ inputs.add_rootless }}
